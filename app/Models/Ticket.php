@@ -22,11 +22,11 @@ class Ticket extends Model
 
     public function approvals(): HasMany
     {
-        return $this->hasMany(TicketApproval::class);
+        return $this->hasMany(TicketApproval::class)->orderBy('level', 'asc');
     }
 
     public function histories(): HasMany
     {
-        return $this->hasMany(TicketHistory::class);
+        return $this->hasMany(TicketHistory::class)->latest();
     }
 }
